@@ -23,7 +23,12 @@
             <label>Cantidad de figuras</label>
             <input id="figuras" type="text" class="form-control" >
             </br>
-            <button id="verTableros">Ver tableros</button>
+
+            <div id="verTableros" onmouseenter="marcadoNegro()"></div>
+
+            <button id="inicioJuego">Iniciar el juego</button>
+
+            <div id="tableroSTF"></div>
         </div>
 
     </div>
@@ -33,7 +38,12 @@
     var cantFiguras = document.getElementById("figuras");
 
     document.getElementById('verTableros').addEventListener('click', crearTableros);
+    document.getElementById('verTableros').addEventListener('click',marcadoNegro);
+    document.getElementById('inicioJuego').addEventListener('click', playSTFGAME);
+    document.getElementById('tableroSTF').addEventListener('click',mostrarTableroDelJuego);
 
+
+    //Crea el tablero al inicio del juego
     function crearTableros(){
         let tablero = "";
 
@@ -50,10 +60,25 @@
         return tablero;
     }
 
+
     function marcadoNegro(){
+        tablero = "⬛";
     }
 
-
+    function mostrarTableroDelJuego(){
+        let tablero = "";
+        for (let x = 0; x < 3*cantFiguras; x++) {
+            for (let y = 0; y < 3*cantFiguras; y++) {
+                if ((x + y) % 2 == 0) {
+                    tablero += "⬜";
+                } else {
+                    tablero += "⬜";
+                }
+            }
+            tablero += "\n";
+        }
+        return tablero;
+    }
     function playSTFGAME(){
 
     }
