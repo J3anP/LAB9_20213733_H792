@@ -80,7 +80,19 @@
         return tablero;
     }
     function playSTFGAME(){
+    var cubosCapturados = 0;
 
+    //posTablero es la posición de cada cuadro negro en la tabla
+
+        if(detectarFilaNegra(posTablero)){
+            cubosCapturados+=3*cantFiguras;
+        }
+
+        if(cubosCapturados>cantCubos)
+            console.log("Se alcanzó a recoger el agua caliente suficiente para tomar el efervescente");
+        else{
+            console.log("No se alcanzó a recoger el agua caliente suficiente para tomar el efervescente");
+        }
 
     }
 
@@ -99,6 +111,20 @@
                 move('down');
                 break;
         }
+    }
+    function detectarFilaNegra(tablero){
+        var count = 0;
+        for (let x = 0; x < 3*cantFiguras; x++) {
+            for (let y = 0; y < 3*cantFiguras; y++) {
+                if (tablero=="⬛"){
+                    count++;
+                }
+            }
+            if(count = 3*cantFiguras){
+                break;
+            }
+        }
+        return true;
     }
     function move(pos){
         const changedPos = {}
